@@ -2,7 +2,6 @@ package lcf
 
 import (
 	"bytes"
-	"runtime"
 	"time"
 
 	"github.com/sirupsen/logrus"
@@ -98,9 +97,9 @@ func NewFormatter(template string, custom CustomHandlers) *CustomFormatter {
 	formatter.ParseTemplate(template, custom)
 
 	// Disable colors if not supported.
-	if !logrus.IsTerminal(logrus.StandardLogger().Out) || (runtime.GOOS == "windows" && !WindowsNativeANSI()) {
+	/*if !logrus.IsTerminal(logrus.StandardLogger().Out) || (runtime.GOOS == "windows" && !WindowsNativeANSI()) {
 		formatter.DisableColors = true
-	}
+	}*/
 
 	return &formatter
 }
